@@ -1,9 +1,17 @@
 /********** Template CSS **********/
 :root {
-    --primary: #6244C5;
-    --secondary: #FFC448;
+    --primary: #8877be;
+    --secondary: #ffdc90;
     --light: #FAFAFB;
     --dark: #12141D;
+}
+
+.bg-rose{
+    background-color: #fffcf7 !important;
+}
+
+.bg-rose-dark{
+    background-color: #f8dfdc !important;
 }
 
 .back-to-top {
@@ -46,9 +54,33 @@
     transition: .5s;
 }
 
-.btn.btn-primary,
-.btn.btn-secondary {
+.btn.btn-secondary{
+    background-color: var(--secondary);
+    border-color: var(--secondary);
+    color: #5c5c5c;
+}
+
+.btn-secondary:hover{
+    background-color: #f8c24d !important;
+    border-color: #f8c24d !important;
+    color: #FFFFFF !important;
+}
+
+.btn-danger{
+    background-color: #f07676 !important;
+    border-color: #f07676 !important;
     color: #FFFFFF;
+}
+
+
+.btn.btn-primary {
+    color: #FFFFFF !important;
+    background-color: var(--primary) !important;
+    border-color: var(--primary) !important;
+}
+
+.btn-primary:hover{
+    background-color: #58488b !important;
 }
 
 .btn-square {

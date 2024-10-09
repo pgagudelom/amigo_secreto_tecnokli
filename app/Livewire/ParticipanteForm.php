@@ -46,7 +46,7 @@ class ParticipanteForm extends Component
 
     public function render()
     {
-        $this->urlLink = url()->full();
+
         return view('livewire.participante-form', [
             'participantes' => $this->grupo->participantes
         ]);
@@ -95,7 +95,7 @@ class ParticipanteForm extends Component
             $participante->save();
         }
 
-        session()->flash('message', 'Sorteo realizado con éxito.');
+        $this->dispatch('success', 'Sorteo realizado con éxito 🎊🥳🎉');
     }
 
 

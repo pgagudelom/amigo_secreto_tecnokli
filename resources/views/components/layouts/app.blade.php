@@ -41,7 +41,7 @@
 
     <!-- Spinner Start -->
     <div id="spinner"
-        class="show bg-white position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
+        class="show bg-rose position-fixed translate-middle w-100 vh-100 top-50 start-50 d-flex align-items-center justify-content-center">
         <div class="spinner-border text-primary" style="width: 3rem; height: 3rem;" role="status">
             <span class="sr-only">Loading...</span>
         </div>
@@ -51,17 +51,17 @@
 
     {{ $slot }}
     <!-- Copyright Start -->
-    <div class="container-fluid bg-dark text-white py-4">
+    <div class="container-fluid bg-rose-dark text-white">
         <div class="container">
-            <div class="row">
-                <div class="col-md-6 text-center text-md-start mb-3 mb-md-0">
-                    &copy; <a class="border-bottom text-secondary" href="tecnokli.com" target="_blank">Tecnokli</a>, All
+            <div class="row py-1">
+                <div class="col-md-6 text-center text-sm-start mb-3 mb-md-0 text-dark" style="font-size: 11px">
+                    &copy; <a class="border-bottom text-primary" href="tecnokli.com" target="_blank">Tecnokli</a>, All
                     Right
                     Reserved.
                 </div>
-                <div class="col-md-6 text-center text-md-end">
+                <div class="col-md-6 text-center text-dark text-sm-end" style="font-size: 11px">
                     <!--/*** This template is free as long as you keep the footer author’s credit link/attribution link/backlink. If you'd like to use the template without the footer author’s credit link/attribution link/backlink, you can purchase the Credit Removal License from "https://htmlcodex.com/credit-removal". Thank you for your support. ***/-->
-                    Designed By <a class="border-bottom text-secondary" href="https://htmlcodex.com">HTML Codex</a>
+                    Designed By <a class="border-bottom" href="https://htmlcodex.com">HTML Codex</a>
                     <br>Distributed By: <a class="border-bottom" href="https://themewagon.com"
                         target="_blank">ThemeWagon</a>
                 </div>

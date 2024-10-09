@@ -1,7 +1,7 @@
 <div>
 
     <!-- Header Start -->
-    <div class="container-fluid bg-light my-6 mt-0" id="home">
+    <div class="container-fluid bg-rose my-6 mt-0" id="home">
         <div class="container">
             <div class="row g-5 align-items-center">
                 <div class="col-lg-6 py-6 pb-0 pt-lg-0">
@@ -28,7 +28,7 @@
 
 
     <!-- Video Modal Start -->
-    <div class="modal modal-video fade" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
+    <div class="modal modal-video fade bg-rose" id="videoModal" tabindex="-1" aria-labelledby="exampleModalLabel"
         aria-hidden="true">
         <div class="modal-dialog">
             <div class="modal-content rounded-0">
@@ -50,7 +50,7 @@
 
     <!-- Contact Start -->
     <div class="container-xxl pb-5" id="contact">
-        <div class="container py-5">
+        <div class="container">
             <div class="row g-5 mb-5 wow fadeInUp" data-wow-delay="0.1s">
                 <div class="col-lg-6">
                     <h1 class="display-5 mb-0">Crea tu grupo</h1>
