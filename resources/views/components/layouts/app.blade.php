@@ -32,6 +32,7 @@
 
     <script src="https://cdn.jsdelivr.net/npm/sweetalert2@11"></script>
 
+    <script src="https://cdnjs.cloudflare.com/ajax/libs/clipboard.js/2.0.11/clipboard.min.js"></script>
     <!-- Estilos de Livewire -->
     @livewireStyles
 </head>
@@ -90,7 +91,6 @@
 
     <!-- Template Javascript -->
     <script src="{{ asset('js/main.js') }}"></script>
-
     <!-- Scripts de Livewire -->
     @livewireScripts
 </body>

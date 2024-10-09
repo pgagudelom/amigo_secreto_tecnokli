@@ -20,7 +20,7 @@ class ParticipanteForm extends Component
 
     #[Url]
     public $is_admin = 0;
-    public $grupo;
+    public $grupo, $urlLink;
     public $nombre;
     public $clave;
     public $regalos = [];
@@ -46,7 +46,7 @@ class ParticipanteForm extends Component
 
     public function render()
     {
-
+        $this->urlLink = url()->full();
         return view('livewire.participante-form', [
             'participantes' => $this->grupo->participantes
         ]);
@@ -122,6 +122,14 @@ class ParticipanteForm extends Component
             // Guardar en una subcarpeta por grupo
             $foto->storeAs("fotos/grupo_{$grupoId}/participante_{$participante}", $nombreArchivo, 'public');
         }
+    }
+
+
+    #[On('eliminarParticipante')]
+    public function eliminarme(Participante $participante){
+        $participante->delete();
+
+        $this->dispatch('success', 'Participante eliminado');
     }
 
 
