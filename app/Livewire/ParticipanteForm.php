@@ -92,7 +92,7 @@ class ParticipanteForm extends Component
             $this->guardarFotos($grupoIdEncriptado, $participanteCrypt);
         }
 
-
+        $this->limpiarCampos();
         return redirect()->route('grupo.participante', ['grupo' => $grupoIdEncriptado]);
     }
 
@@ -147,6 +147,13 @@ class ParticipanteForm extends Component
         $participante->delete();
 
         $this->dispatch('success', 'Participante eliminado');
+    }
+
+    public function limpiarCampos(){
+         $this->nombre = '';
+         $this->clave = '';
+         $this->regalos = [];
+         $this->fotos = '';
     }
 
 
