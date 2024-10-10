@@ -55,9 +55,18 @@ class ParticipanteForm extends Component
     protected $rules = [
         'nombre' => 'required',
         'clave' => 'required',
-        'regalos' => 'required|array|min:3',
-        'fotos.*' => 'required|mimes:jpg,jpeg,png,gif|max:10240'
+        'regalos' => 'required|array|min:1',
+        'fotos.*' => 'mimes:jpg,jpeg,png,gif|max:10240'
     ];
+
+    public function messages(){
+        return [
+            'nombre.required' => 'El nombre es obligatorio',
+            'clave.required' => 'La clave es obligatoria',
+            'regalos.required' => 'Debes escribir al menos un regalo',
+            'fotos.max' => 'Las fotos es muy grande'
+        ];
+    }
 
 
     public function registrarParticipante()
