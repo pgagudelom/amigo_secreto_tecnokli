@@ -6,6 +6,10 @@
     --dark: #12141D;
 }
 
+.hidden{
+    display: none !important;
+}
+
 .bg-rose{
     background-color: #fffcf7 !important;
 }
