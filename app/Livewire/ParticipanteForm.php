@@ -79,7 +79,10 @@ class ParticipanteForm extends Component
         $grupoIdEncriptado = $hashids->encode($this->grupo->id);
         $participanteCrypt = $hashids->encode($participante->id);
 
-        $this->guardarFotos($grupoIdEncriptado, $participanteCrypt);
+        if($this->fotos){
+            $this->guardarFotos($grupoIdEncriptado, $participanteCrypt);
+        }
+
 
         return redirect()->route('grupo.participante', ['grupo' => $grupoIdEncriptado]);
     }
@@ -100,7 +103,8 @@ class ParticipanteForm extends Component
 
 
     #[On('verAmigoSecreto')]
-    public function verAmigoSecreto($participanteId){
+    public function verAmigoSecreto($participanteId)
+    {
 
         $hashids = new Hashids('tecnokli_amigo_secreto', 10);
 
@@ -114,19 +118,23 @@ class ParticipanteForm extends Component
     }
 
 
-    public function guardarFotos($grupoId, $participante){
+    public function guardarFotos($grupoId, $participante)
+    {
 
-        foreach ($this->fotos as $foto) {
-            $nombreArchivo = uniqid() . '.' . $foto->getClientOriginalExtension();
+        if ($this->fotos) {
+            foreach ($this->fotos as $foto) {
+                $nombreArchivo = uniqid() . '.' . $foto->getClientOriginalExtension();
 
-            // Guardar en una subcarpeta por grupo
-            $foto->storeAs("fotos/grupo_{$grupoId}/participante_{$participante}", $nombreArchivo, 'public');
+                // Guardar en una subcarpeta por grupo
+                $foto->storeAs("fotos/grupo_{$grupoId}/participante_{$participante}", $nombreArchivo, 'public');
+            }
         }
     }
 
 
     #[On('eliminarParticipante')]
-    public function eliminarme(Participante $participante){
+    public function eliminarme(Participante $participante)
+    {
         $participante->delete();
 
         $this->dispatch('success', 'Participante eliminado');
