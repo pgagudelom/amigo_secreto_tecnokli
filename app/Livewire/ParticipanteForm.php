@@ -56,7 +56,7 @@ class ParticipanteForm extends Component
         'nombre' => 'required',
         'clave' => 'required',
         'regalos' => 'required|array|min:1',
-        'fotos.*' => 'mimes:jpg,jpeg,png,gif|max:10240'
+        'fotos.*' => 'mimes:jpg,jpeg,png,gif|max:5000'
     ];
 
     public function messages(){
