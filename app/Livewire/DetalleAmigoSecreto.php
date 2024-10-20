@@ -9,7 +9,7 @@ use Storage;
 
 class DetalleAmigoSecreto extends Component
 {
-    public $grupoParametro, $participanteParametro;
+    public $grupoParametro, $participanteParametro, $amigoNoExiste;
 
     public function mount($grupo, $participante){
         $this->grupoParametro = $grupo;
@@ -25,15 +25,25 @@ class DetalleAmigoSecreto extends Component
         $participante = Participante::find($participanteId[0]);
         $amigoSecreto =  Participante::find($participante->amigo_secreto);
 
-        $amigoIdEncriptado = $hashids->encode($amigoSecreto->id);
+        if(!empty($amigoSecreto)){
+            $amigoIdEncriptado = $hashids->encode($amigoSecreto->id);
+            $fotos = $this->listarFotos($this->grupoParametro, $amigoIdEncriptado);
 
-        $fotos = $this->listarFotos($this->grupoParametro, $amigoIdEncriptado);
+        }else{
+            $this->amigoNoExiste = 1;
+        }
 
-        return view('livewire.detalle-amigo-secreto', [
-            'amigo' => $amigoSecreto,
-            'regalos' => json_decode($amigoSecreto->regalos),
-            'fotos' => $fotos,
-        ]);
+
+        if($this->amigoNoExiste == 1){
+            return view('livewire.errores.amigo-no-existe');
+        }else{
+            return view('livewire.detalle-amigo-secreto', [
+                'amigo' => $amigoSecreto,
+                'regalos' => json_decode($amigoSecreto->regalos),
+                'fotos' => $fotos,
+            ]);
+        }
+
     }
 
     public function regresar(){

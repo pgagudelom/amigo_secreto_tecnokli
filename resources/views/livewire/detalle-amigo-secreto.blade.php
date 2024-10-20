@@ -1,6 +1,7 @@
 <div>
-    <!-- About Start -->
-    <div class="container-xxl py-6" id="about">
+
+     <!-- About Start -->
+     <div class="container-xxl py-6" id="about">
         <div class="container">
             <div class="row g-5">
                 <div class="col-lg-6 wow fadeInUp" data-wow-delay="0.1s">
@@ -31,5 +32,5 @@
             </div>
         </div>
     </div>
-    <!-- About End -->
+
 </div>
