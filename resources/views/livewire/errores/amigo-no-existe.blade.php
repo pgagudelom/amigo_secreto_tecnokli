@@ -1,6 +1,6 @@
 <div class="row justify-content-center mb-3">
     <div class="col-md-12 col-sm-12">
-        <div class="card shadow-lg border-0 rounded-lg mt-5 mx-auto" style="width: 30rem;">
+        <div class="card shadow-lg border-0 rounded-lg mt-5 mx-auto">
             <h3 class="card-header display-1 text-muted text-center mb-2">
                 <i class="fas fa-exclamation-triangle text-danger"></i>
             </h3>
