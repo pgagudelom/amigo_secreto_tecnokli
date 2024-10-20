@@ -45,7 +45,7 @@
                                             onclick="confirmarClaveAdmin('{{ $participante->clave }}')">Realizar
                                             Sorteo</button>
                                     @endif
-                                    @if (!$participante->is_admin)
+                                    @if (!$participante->is_admin && !$participante->amigo_secreto)
                                         <button class="btn btn-sm btn-danger"
                                             onclick="confirmarClaveParticipanteEliminar('{{ $participante->clave }}', '{{ $participante->id }}')">
                                             Eliminarme

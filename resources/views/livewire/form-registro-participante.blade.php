@@ -52,9 +52,9 @@
                     @enderror
                 </div>
             </div>
-            <div class="modal-footer">
+            <div class="modal-footer" wire:loading.class="hidden">
                 <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
-                <button type="button" class="btn btn-primary" wire:click='registrarParticipante' wire:loading.class="hidden">Registrarme</button>
+                <button type="button" class="btn btn-primary" wire:click='registrarParticipante'>Registrarme</button>
             </div>
         </div>
     </div>
