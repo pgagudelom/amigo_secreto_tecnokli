@@ -32,13 +32,15 @@
                             <div class="ms-sm-4">
                                 <h4 class="mb-3"> {{ $participante->nombre }}</h4>
                                 <p class="mb-3">
+                                    <button class="btn btn-sm btn-outline-primary m-1"
+                                    onclick="confirmarClaveParticipante('{{ $participante->clave }}', '{{ $participante->id }}', 'cambiar') ">
+                                    <i class="bi bi-pencil"></i> Cambiar mis regalos
+                                </button>
                                     @if ($participante->amigo_secreto)
-                                        <button class="btn btn-sm btn-primary"
-                                            onclick="confirmarClaveParticipante('{{ $participante->clave }}', '{{ $participante->id }}')">
-                                            Ver mi amigo secreto
+                                        <button class="btn btn-sm btn-primary m-1"
+                                            onclick="confirmarClaveParticipante('{{ $participante->clave }}', '{{ $participante->id }}', 'veramigo' )">
+                                            <i class="bi bi-eye"></i> Ver mi amigo secreto
                                         </button>
-                                    @else
-                                        <span>Aún no se ha realizado el sorteo</span>
                                     @endif
                                     @if ($participante->is_admin === 1)
                                         <button class="btn btn-sm btn-secondary m-1"
@@ -90,7 +92,7 @@
         });
     }
 
-    async function confirmarClaveParticipante(clave, participanteId) {
+    async function confirmarClaveParticipante(clave, participanteId, accion) {
         const {
             value: password
         } = await Swal.fire({
@@ -106,7 +108,15 @@
             inputValidator: (value) => {
                 return new Promise((resolve) => {
                     if (value === clave) {
-                        Livewire.dispatch('verAmigoSecreto', [participanteId]);
+                        console.log(accion)
+                        if(accion == 'veramigo'){
+                            Livewire.dispatch('verAmigoSecreto', [participanteId]);
+                        }
+
+                        if(accion == 'cambiar'){
+                            Livewire.dispatch('verRegalos', [participanteId]);
+                        }
+
                         resolve();
                     } else {
                         resolve("Clave incorrecta!");
@@ -208,5 +218,10 @@
             title: msg
         });
     });
+
+    $wire.on('verModal', msg => {
+        console.log('test modal');
+        $('#staticBackdrop').modal('show');
+    })
 </script>
 @endscript

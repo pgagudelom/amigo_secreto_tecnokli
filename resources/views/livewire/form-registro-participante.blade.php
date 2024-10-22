@@ -4,21 +4,21 @@
     <div class="modal-dialog">
         <div class="modal-content">
             <div class="modal-header">
-                <h1 class="modal-title fs-5" id="staticBackdropLabel">Registrarme</h1>
-                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close"></button>
+                <h1 class="modal-title fs-5" id="staticBackdropLabel">@if($selected_id) Actualizarme @else Registrarme @endif</h1>
+                <button type="button" class="btn-close" data-bs-dismiss="modal" aria-label="Close" wire:click='limpiarCampos'></button>
             </div>
             <div class="modal-body">
                 <div class="row">
                     <div class="col-md col-12 m-2">
                         <input type="text" class="form-control" id="nombre" placeholder="Tu nombre"
-                            wire:model="nombre">
+                            wire:model="nombre" @if($selected_id) readonly @endif>
                         @error('nombre')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
                     </div>
                     <div class="col-md col-12 m-2">
                         <input type="password" class="form-control" id="clave" placeholder="Tu clave"
-                            wire:model="clave">
+                            wire:model="clave" @if($selected_id) readonly @endif>
                         @error('clave')
                             <p class="text-danger">{{ $message }}</p>
                         @enderror
@@ -53,8 +53,12 @@
                 </div>
             </div>
             <div class="modal-footer" wire:loading.class="hidden">
-                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal">Cerrar</button>
+                <button type="button" class="btn btn-outline-secondary" data-bs-dismiss="modal" wire:click='limpiarCampos'>Cerrar</button>
+                @if($selected_id > 0)
+                <button type="button" class="btn btn-primary" wire:click='cambiarRegalos'>Actualizar regalos</button>
+                @else
                 <button type="button" class="btn btn-primary" wire:click='registrarParticipante'>Registrarme</button>
+                @endif
             </div>
         </div>
     </div>

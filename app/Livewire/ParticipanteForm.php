@@ -11,6 +11,7 @@ use Livewire\Attributes\On;
 use Livewire\Attributes\Url;
 use Livewire\Component;
 use Livewire\WithFileUploads;
+use Storage;
 
 class ParticipanteForm extends Component
 {
@@ -25,6 +26,7 @@ class ParticipanteForm extends Component
     public $clave;
     public $regalos = [];
     public $fotos;
+    public $selected_id;
 
     public function mount($grupo)
     {
@@ -59,7 +61,8 @@ class ParticipanteForm extends Component
         'fotos.*' => 'mimes:jpg,jpeg,png,gif|max:5000'
     ];
 
-    public function messages(){
+    public function messages()
+    {
         return [
             'nombre.required' => 'El nombre es obligatorio',
             'clave.required' => 'La clave es obligatoria',
@@ -88,7 +91,7 @@ class ParticipanteForm extends Component
         $grupoIdEncriptado = $hashids->encode($this->grupo->id);
         $participanteCrypt = $hashids->encode($participante->id);
 
-        if($this->fotos){
+        if ($this->fotos) {
             $this->guardarFotos($grupoIdEncriptado, $participanteCrypt);
         }
 
@@ -127,6 +130,37 @@ class ParticipanteForm extends Component
     }
 
 
+    #[On('verRegalos')]
+    public function verRegalos($participanteId)
+    {
+
+        $participante = Participante::where('id', $participanteId)->first();
+        $this->nombre = $participante->nombre;
+        $this->regalos = json_decode($participante->regalos);
+        $this->selected_id = $participante->id;
+
+        $this->dispatch('verModal');
+    }
+
+    public function cambiarRegalos(){
+
+        $participante = Participante::find($this->selected_id);
+        $participante->regalos = json_encode($this->regalos);
+        $participante->save();
+
+        $hashids = new Hashids('tecnokli_amigo_secreto', 10);
+
+        $grupoEncriptado = $hashids->encode($this->grupo->id);
+        $participanteEncriptado = $hashids->encode($this->selected_id);
+
+        $this->guardarFotos($grupoEncriptado, $participanteEncriptado);
+
+        $this->limpiarCampos();
+        return redirect()->route('grupo.participante', ['grupo' => $grupoEncriptado]);
+
+    }
+
+
     public function guardarFotos($grupoId, $participante)
     {
 
@@ -140,20 +174,40 @@ class ParticipanteForm extends Component
         }
     }
 
+    public function eliminarFotosParticipante($grupoId, $participante)
+    {
+        // Elimina el directorio completo del participante
+        $directory = "fotos/grupo_{$grupoId}/participante_{$participante}";
+
+        if (Storage::disk('public')->exists($directory)) {
+            Storage::disk('public')->deleteDirectory($directory);
+        }
+    }
+
 
     #[On('eliminarParticipante')]
     public function eliminarme(Participante $participante)
     {
+        $hashids = new Hashids('tecnokli_amigo_secreto', 10);
+
+        $grupoIdEncriptado = $hashids->encode($this->grupo->id);
+        $participanteCrypt = $hashids->encode($participante->id);
+
+        $this->eliminarFotosParticipante($grupoIdEncriptado, $participanteCrypt);
+
         $participante->delete();
+
 
         $this->dispatch('success', 'Participante eliminado');
     }
 
-    public function limpiarCampos(){
-         $this->nombre = '';
-         $this->clave = '';
-         $this->regalos = [];
-         $this->fotos = '';
+    public function limpiarCampos()
+    {
+        $this->nombre = '';
+        $this->clave = '';
+        $this->regalos = [];
+        $this->fotos = '';
+        $this->selected_id = '';
     }
 
 
