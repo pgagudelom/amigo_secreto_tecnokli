@@ -39,7 +39,7 @@
                 <div class="modal-body">
                     <!-- 16:9 aspect ratio -->
                     <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="https://youtu.be/LkCiyYx11Lk?si=FcUs_M5tI2Sr0Goz" id="video" allowfullscreen
+                        <iframe class="embed-responsive-item" src="https://youtu.be/LkCiyYx11Lk?si=1-gkYjA1h_q0pr5f" id="video" allowfullscreen
                             allowscriptaccess="always" allow="autoplay"></iframe>
                     </div>
                 </div>
