@@ -12,7 +12,7 @@
                     <div class="d-flex align-items-center pt-5">
                         <a href="#contact" class="btn btn-primary py-3 px-4 me-5">Crear grupo de participantes</a>
                         <button type="button" class="btn-play" data-bs-toggle="modal"
-                            data-src="https://youtu.be/LkCiyYx11Lk?si=1-gkYjA1h_q0pr5f" data-bs-target="#videoModal">
+                             data-bs-target="#videoModal">
                             <span></span>
                         </button>
                         <h5 class="ms-4 mb-0 d-none d-sm-block">Tutorial</h5>
@@ -39,8 +39,7 @@
                 <div class="modal-body">
                     <!-- 16:9 aspect ratio -->
                     <div class="ratio ratio-16x9">
-                        <iframe class="embed-responsive-item" src="https://youtu.be/LkCiyYx11Lk?si=1-gkYjA1h_q0pr5f" id="video" allowfullscreen
-                            allowscriptaccess="always" allow="autoplay"></iframe>
+                        <iframe width="560" height="315" src="https://www.youtube.com/embed/JPYDPI8srxg?si=EtZunQ-Ku0Itfvm0" title="YouTube video player" frameborder="0" allow="accelerometer; autoplay; clipboard-write; encrypted-media; gyroscope; picture-in-picture; web-share" referrerpolicy="strict-origin-when-cross-origin" allowfullscreen></iframe>
                     </div>
                 </div>
             </div>
